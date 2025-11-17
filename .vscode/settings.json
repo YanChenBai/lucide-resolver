@@ -1,0 +1,8 @@
+{
+  "editor.formatOnSave": true,
+  "cSpell.words": [
+    "nanoevents",
+    "typebox"
+  ],
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}

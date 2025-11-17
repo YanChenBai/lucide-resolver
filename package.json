@@ -1,0 +1,128 @@
+{
+  "name": "lucide-resolver",
+  "type": "module",
+  "version": "0.0.1",
+  "packageManager": "pnpm@10.21.0",
+  "description": "Auto-import resolver for Lucide icons.",
+  "author": "YanChenBai <author.name@mail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/YanChenBai/type-ipc#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YanChenBai/type-ipc.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YanChenBai/library/issues"
+  },
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./angular": "./dist/angular.mjs",
+    "./astro": "./dist/astro.mjs",
+    "./preact": "./dist/preact.mjs",
+    "./react": "./dist/react.mjs",
+    "./react-native": "./dist/react-native.mjs",
+    "./solid": "./dist/solid.mjs",
+    "./svelte": "./dist/svelte.mjs",
+    "./vue": "./dist/vue.mjs",
+    "./package.json": "./package.json"
+  },
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "typesVersions": {
+    "*": {
+      ".": [
+        "./dist/index.d.mts"
+      ]
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
+    "typecheck": "tsc --noEmit",
+    "release:prepare": "nr lint && nr typecheck && nr test && nr build",
+    "release": "nr release:prepare && bumpp && npm publish",
+    "lint": "eslint .",
+    "lint:fix": "nr lint --fix",
+    "play": "pnpm --filter ./playground dev"
+  },
+  "peerDependencies": {
+    "@lucide/astro": "*",
+    "@lucide/svelte": "*",
+    "lucide-angular": "*",
+    "lucide-preact": "*",
+    "lucide-react": "*",
+    "lucide-react-native": "*",
+    "lucide-solid": "*",
+    "lucide-vue-next": "*"
+  },
+  "peerDependenciesMeta": {
+    "@lucide/astro": {
+      "optional": true
+    },
+    "@lucide/svelte": {
+      "optional": true
+    },
+    "lucide-angular": {
+      "optional": true
+    },
+    "lucide-preact": {
+      "optional": true
+    },
+    "lucide-react": {
+      "optional": true
+    },
+    "lucide-react-native": {
+      "optional": true
+    },
+    "lucide-solid": {
+      "optional": true
+    },
+    "lucide-vue-next": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@lucide/astro": "latest",
+    "@lucide/svelte": "latest",
+    "lucide-angular": "latest",
+    "lucide-preact": "latest",
+    "lucide-react": "latest",
+    "lucide-react-native": "latest",
+    "lucide-solid": "latest",
+    "lucide-vue-next": "latest"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^6.2.0",
+    "@antfu/ni": "^27.0.1",
+    "@types/node": "^22.19.0",
+    "@vitest/ui": "^4.0.8",
+    "bumpp": "^10.3.1",
+    "eslint": "^9.39.1",
+    "jsdom": "^27.1.0",
+    "simple-git-hooks": "^2.13.1",
+    "tsdown": "^0.16.1",
+    "typescript": "^5.9.3",
+    "unplugin-auto-import": "^20.2.0",
+    "unplugin-vue-components": "^30.0.0",
+    "vite": "^7.2.2",
+    "vitest": "^4.0.8"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
+  },
+  "simple-git-hooks": {
+    "pre-commit": "nr lint:fix",
+    "pre-push": "nr lint"
+  }
+}
